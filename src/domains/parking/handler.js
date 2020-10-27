@@ -94,5 +94,6 @@ module.exports = {
                 console.log(`${i + 1}\t${slot.car.platNumber}`);
             }
         }
+        return true;
     }
 }
