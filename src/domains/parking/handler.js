@@ -86,12 +86,16 @@ module.exports = {
         return;
     },
 
-    status(pSpace) {
-        console.log(`Slot No. Registration No.`);
+    status(pSpace, print = true) {
+        if (print) {
+            console.log(`Slot No. Registration No.`);
+        }
         for (let i = 0; i < pSpace.slots.length; i++) {
             const slot = pSpace.slots[i];
             if (slot.car !== null) {
-                console.log(`${i + 1}\t${slot.car.platNumber}`);
+                if (print) {
+                    console.log(`${i + 1}\t${slot.car.platNumber}`);
+                }
             }
         }
         return true;
