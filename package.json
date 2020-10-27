@@ -11,5 +11,8 @@
     "url": "github.com/hrz8/node-parking-lot"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "pkg": "^4.4.9"
+  }
 }
