@@ -3,12 +3,19 @@ const Space = function() {
     this.cars = [];
     this.slots = [];
 }
+
 Space.prototype.initSlot = function(n) {
     for (let i = 1; i <= n; i++) {
         slot = new Slot(i);
         this.slots.push(slot);
     }
 }
+
+Space.prototype.countEmpty = function() {
+    const arr = this.slots.filter(o => o.car === null && o.enterAt === null);
+    return arr.length;
+}
+
 Space.prototype.isAvailable = function() {
     if (this.slots.length === 0) {
         return null;
@@ -16,6 +23,7 @@ Space.prototype.isAvailable = function() {
     const available = this.slots.findIndex(o => o.car === null && o.enterAt === null);
     return available === -1 ? false : available;
 }
+
 Space.prototype.addCar = function(i, car) {
     const alreadyInSpace = this.cars.filter(o => o.platNumber === car.platNumber).length;
     if (alreadyInSpace) {
@@ -25,6 +33,7 @@ Space.prototype.addCar = function(i, car) {
     this.cars.push(car);
     return true;
 }
+
 Space.prototype.removeCar = function(platNumber) {
     const isInSlot = this.slots.findIndex(o => o.car !== null ? o.car.platNumber === platNumber : false);
     if (isInSlot < 0) {
@@ -44,6 +53,7 @@ const Slot = function(id) {
     this.car = null;
     this.enterAt = null;
 }
+
 Slot.prototype.updateCar = function(car = null) {
     this.enterAt = new Date();
     if (car === null) {

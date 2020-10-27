@@ -1,13 +1,13 @@
-echo ">> download dependencies ...."
+echo ">> download dependencies..."
 npm i
 echo ">> download dependencies done"
 
 # compile binary
-echo ">> run pkg build ...."
+echo ">> run pkg build..."
 node_modules/.bin/pkg  -o bin/parking_lot -t linux app.js
 echo ">> run pkg build done"
 
 # run test
-echo ">> run testing ...."
+echo ">> run testing..."
 npm test
 echo ">> run testing done"

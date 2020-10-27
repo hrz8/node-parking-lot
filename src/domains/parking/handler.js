@@ -88,7 +88,10 @@ module.exports = {
 
     status(pSpace, print = true) {
         if (print) {
-            console.log(`Slot No. Registration No.`);
+            console.log(`Slot No.    Registration No.`);
+        }
+        if (pSpace.slots.length === pSpace.countEmpty() && print) {
+            console.log(`0.\t-`);
         }
         for (let i = 0; i < pSpace.slots.length; i++) {
             const slot = pSpace.slots[i];
