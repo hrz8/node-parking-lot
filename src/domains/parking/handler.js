@@ -88,7 +88,7 @@ module.exports = {
 
     status(pSpace, print = true) {
         if (print) {
-            console.log(`Slot No.    Registration No.`);
+            console.log(`Slot No.	Registration No.`);
         }
         if (pSpace.slots.length === pSpace.countEmpty() && print) {
             console.log(`0.\t-`);
@@ -97,7 +97,7 @@ module.exports = {
             const slot = pSpace.slots[i];
             if (slot.car !== null) {
                 if (print) {
-                    console.log(`${i + 1}\t${slot.car.platNumber}`);
+                    console.log(`${i + 1}		${slot.car.platNumber}`);
                 }
             }
         }

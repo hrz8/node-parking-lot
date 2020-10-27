@@ -15,9 +15,11 @@ if (args.length > 0) {
         output: false,
         console: false
     });
-    
+
     readFile.on('line', line => {
         commandHandler(line);
+    }).on('close', () => {
+        process.exit(0);
     });
 }
 
