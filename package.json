@@ -1,0 +1,15 @@
+{
+  "name": "node-parking-lot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/hrz8/node-parking-lot"
+  },
+  "author": "",
+  "license": "ISC"
+}
