@@ -1,7 +1,10 @@
 const readline = require('readline');
 const fs = require('fs');
 
+const { Space } = require('./src/domains/parking/parking');
 const parkingHandler = require('./src/domains/parking/handler');
+
+const parkingSpace = new Space();
 
 const args = process.argv.slice(2);
 if (args.length > 0) {
@@ -32,12 +35,16 @@ function commandHandler(str) {
 
     switch (cmds[0]) {
         case 'create_parking_lot':
-            parkingHandler.create_parking_lot(cmds);
+            parkingHandler.create_parking_lot(cmds, parkingSpace);
+            console.log(parkingSpace);
             break;
         case 'park':
-            console.log(2);
+            parkingHandler.park(cmds, parkingSpace);
+            console.log(parkingSpace.slots);
+            console.log(parkingSpace.cars);
             break;
         case 'leave':
+            parkingHandler.leave(cmds, parkingSpace);
             console.log(3);
             break;
         case 'status':
