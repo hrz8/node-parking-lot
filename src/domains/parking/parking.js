@@ -13,7 +13,7 @@ Space.prototype.isAvailable = function() {
     if (this.slots.length === 0) {
         return null;
     }
-    const available = this.slots.findIndex(o => o.car === null && slot.enterAt === null);
+    const available = this.slots.findIndex(o => o.car === null && o.enterAt === null);
     return available === -1 ? false : available;
 }
 Space.prototype.addCar = function(i, car) {
@@ -26,10 +26,7 @@ Space.prototype.addCar = function(i, car) {
     return true;
 }
 Space.prototype.removeCar = function(platNumber) {
-    console.log("dieu");
-    console.log(this.slots);
     const isInSlot = this.slots.findIndex(o => o.car !== null ? o.car.platNumber === platNumber : false);
-    console.log("ditu");
     if (isInSlot < 0) {
         return [false];
     }

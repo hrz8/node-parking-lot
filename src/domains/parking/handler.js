@@ -87,6 +87,12 @@ module.exports = {
     },
 
     status(pSpace) {
-
+        console.log(`Slot No. Registration No.`);
+        for (let i = 0; i < pSpace.slots.length; i++) {
+            const slot = pSpace.slots[i];
+            if (slot.car !== null) {
+                console.log(`${i + 1}.\t${slot.car.platNumber}`);
+            }
+        }
     }
 }
