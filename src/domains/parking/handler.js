@@ -67,6 +67,12 @@ module.exports = {
         cmd = cmds[0];
         params = cmds.slice(1);
         platNumber = params[0];
+        hour = parseInt(params[1]);
+
+        if (isNaN(hour) || hour < 1) {
+            console.log("[ERROR] hour value argument must be numeric and larger than 0");
+            return;
+        }
 
         const remove = pSpace.removeCar(platNumber);
         if (remove.length < 2) {
@@ -76,7 +82,11 @@ module.exports = {
 
         const slotWillEmpty = remove[1];
 
-        console.log(`Registration number ${slotWillEmpty.car} with Slot Number ${slotWillEmpty.id} is free at ${slotWillEmpty.enterAt}`);
+        console.log(`Registration number ${slotWillEmpty.car} with Slot Number ${slotWillEmpty.id} is free with Charge ${10 + (hour > 2 ? (hour - 2) * 10 : 0)}`);
         return;
+    },
+
+    status(pSpace) {
+
     }
 }

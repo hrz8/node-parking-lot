@@ -36,21 +36,15 @@ function commandHandler(str) {
     switch (cmds[0]) {
         case 'create_parking_lot':
             parkingHandler.create_parking_lot(cmds, parkingSpace);
-            console.log(parkingSpace);
             break;
         case 'park':
             parkingHandler.park(cmds, parkingSpace);
-            console.log(parkingSpace.slots);
-            console.log(parkingSpace.cars);
             break;
         case 'leave':
             parkingHandler.leave(cmds, parkingSpace);
-            console.log(parkingSpace.slots);
-            console.log(parkingSpace.cars);
-            console.log(3);
             break;
         case 'status':
-            console.log(4);
+            parkingHandler.status(parkingSpace);
             break;
         case 'exit':
             process.exit(0);

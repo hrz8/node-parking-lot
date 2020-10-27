@@ -26,7 +26,10 @@ Space.prototype.addCar = function(i, car) {
     return true;
 }
 Space.prototype.removeCar = function(platNumber) {
-    const isInSlot = this.slots.findIndex(o => o.car.platNumber === platNumber);
+    console.log("dieu");
+    console.log(this.slots);
+    const isInSlot = this.slots.findIndex(o => o.car !== null ? o.car.platNumber === platNumber : false);
+    console.log("ditu");
     if (isInSlot < 0) {
         return [false];
     }
