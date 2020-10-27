@@ -45,19 +45,12 @@ function commandHandler(str) {
             break;
         case 'leave':
             parkingHandler.leave(cmds, parkingSpace);
+            console.log(parkingSpace.slots);
+            console.log(parkingSpace.cars);
             console.log(3);
             break;
         case 'status':
             console.log(4);
-            break;
-        case 'registration_numbers_for_cars_with_colour':
-            console.log(5);
-            break;
-        case 'slot_numbers_for_cars_with_colour':
-            console.log(6);
-            break;
-        case 'slot_number_for_registration_number':
-            console.log(7);
             break;
         case 'exit':
             process.exit(0);

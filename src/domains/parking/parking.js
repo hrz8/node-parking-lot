@@ -5,10 +5,7 @@ const Space = function() {
 }
 Space.prototype.initSlot = function(n) {
     for (let i = 1; i <= n; i++) {
-        slot = new Slot(
-            i,
-            String(i)
-        );
+        slot = new Slot(i);
         this.slots.push(slot);
     }
 }
@@ -16,19 +13,11 @@ Space.prototype.isAvailable = function() {
     if (this.slots.length === 0) {
         return null;
     }
-    let available = null;
-    for (let i = 0; i < this.slots.length; i++) {
-        const slot = this.slots[i];
-        if (slot.car === null && slot.enterAt === null) {
-            available = i;
-            break
-        }
-    }
-    return available == null ? false : available;
+    const available = this.slots.findIndex(o => o.car === null && slot.enterAt === null);
+    return available === -1 ? false : available;
 }
 Space.prototype.addCar = function(i, car) {
-    const alreadyInSpace = this.cars.filter(o => o.name === car.name).length;
-    console.log(alreadyInSpace);
+    const alreadyInSpace = this.cars.filter(o => o.platNumber === car.platNumber).length;
     if (alreadyInSpace) {
         return false;
     }
@@ -36,10 +25,22 @@ Space.prototype.addCar = function(i, car) {
     this.cars.push(car);
     return true;
 }
+Space.prototype.removeCar = function(platNumber) {
+    const isInSlot = this.slots.findIndex(o => o.car.platNumber === platNumber);
+    if (isInSlot < 0) {
+        return [false];
+    }
+    const { id, car, enterAt } = this.slots[isInSlot];
+    this.slots[isInSlot].updateCar();
 
+    const isInSpace = this.cars.findIndex(o => o.platNumber === platNumber);
+    this.cars.splice(isInSpace, 1);
+    return [true, {id, car: car.platNumber, enterAt }];
+}
 
-const Slot = function() {
+const Slot = function(id) {
     if (!new.target) throw Error("Slot must be called with new keyword!");
+    this.id = id;
     this.car = null;
     this.enterAt = null;
 }

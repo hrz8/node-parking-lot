@@ -58,5 +58,25 @@ module.exports = {
             console.log("[ERROR] unknown plat number!");
             return;
         }
+
+        if (cmds.length < 3) {
+            console.log("[ERROR] unknown hour amount!");
+            return;
+        }
+
+        cmd = cmds[0];
+        params = cmds.slice(1);
+        platNumber = params[0];
+
+        const remove = pSpace.removeCar(platNumber);
+        if (remove.length < 2) {
+            console.log(`Registration number ${platNumber} not found`);
+            return;
+        }
+
+        const slotWillEmpty = remove[1];
+
+        console.log(`Registration number ${slotWillEmpty.car} with Slot Number ${slotWillEmpty.id} is free at ${slotWillEmpty.enterAt}`);
+        return;
     }
 }
